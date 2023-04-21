@@ -1,9 +1,11 @@
-#status{
+#status, #no_o_object{
     background-color:rgb(226, 202, 202) ;
     color:rgb(91, 117, 39);
     width: fit-content;
     padding-left: 10px;
     padding-right: 10px;
+}
+#status{
     padding-top: 5px;
     padding-bottom: 5px;
     margin: 5px;
@@ -11,6 +13,6 @@
 canvas{
     box-shadow: 10px 10px 10px gold;
     border-radius: 100px;
-    margin-top: 200px;
+    margin-top: 240px;
     border: 5px solid goldenrod;
 }
