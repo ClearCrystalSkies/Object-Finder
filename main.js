@@ -10,7 +10,7 @@ function setup() {
     console.log("Canvas and video set up.")
 }
 function search(){
-    object_detector = ml5.objectDetector('cocossd', modelLoaded);
+    objectDetector = ml5.objectDetector('cocossd', modelLoaded);
     document.getElementById("status").innerHTML= " Status Report : Detecting object(s) . . .";
     document.getElementById("status").style.cursor = "progress";
     input = document.getElementById("input").value;
@@ -26,8 +26,7 @@ function draw(){
     if (status != "") {
         objectDetector.detect(video, gotResults);
         for (let i = 0; i < objects.length; i++ ){
-            if (objects[i].length == input) {
-                video.stop();
+            if (objects[i].label == input) {
                 objectDetector.detect(gotResults);
                 console.log("video stopped cocossd model excution stopped");
                 document.getElementById("status").innerHTML = "Satus Report : Object detected. '" + input + "' found!";
@@ -37,7 +36,7 @@ function draw(){
             }else{
                 document.getElementById("status").innerHTML = "Status Report : '" + input +"' not found.";
             }
-            percentage = floor(object[i].confidence * 100);
+            percentage = floor(objects[i].confidence * 100);
             fill("palevoiletred");
             stroke("black");
             text(objects[i].label + " " + objects[i].confidence + "%", objects[i].x, objects[i].y);
